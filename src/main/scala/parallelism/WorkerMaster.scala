@@ -41,6 +41,7 @@ class WorkerMaster(workerCount: Int) extends Actor {
     case IterationCount(count) =>
       val newRemaining = remaining - 1
       val newIterations = count + iterations
+
       if(newRemaining == 0) {
         caller ! IterationCount(newIterations)
         context.stop(self)
